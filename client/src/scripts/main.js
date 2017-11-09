@@ -1,6 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '../styles/main.sass';
+import Header from './components/Header';
+import List from './components/List'
 
 
-ReactDOM.render(<h1>Hello World</h1>, document.getElementById('app'));
+class App extends React.Component{
+	render(){
+		return (
+			<div className="row wrapper">
+				<Header />
+				<List />
+			</div>
+		)
+	}
+}
+
+ReactDOM.render(<App />, document.getElementById('app'));

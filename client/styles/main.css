@@ -1,0 +1,95 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans', sans-serif;
+	color: white;
+}
+
+html { 
+	background: url(../img/bg.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: 100%;
+}
+
+body {
+    background-color: transparent;
+    overflow-x: hidden;
+    background-color: rgba(0, 0, 0, 0.8);
+    min-height: 100%;
+}
+
+
+.wrapper, #app, body{
+	height: 100%!important;
+}
+
+header{
+	background: #e0e2e5;
+	height: 100%;
+}
+
+header h1 {
+	padding: 20px 40px;
+	color: black;
+	display: block;
+	text-align: center;
+}
+
+form.add-form{
+	width: 200px;
+	margin: 0 auto;
+}
+
+form.add-form p{
+    position: absolute;
+    width: 190px;
+    top: 40%;
+    text-align: center;
+    color: black;
+}
+
+form.add-form div {
+	position: relative;
+}
+
+form.add-form button {
+	background-color: black;
+	color: white;
+	font-size: bold;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	margin: 0 auto;
+	margin-top: 40px;
+	display: block;
+}
+
+ul.list {
+	height: 100%;
+	overflow: scroll;
+	list-style-type: none;
+	padding-left: 30px;
+}
+
+ul.list li {
+	border: 1px solid white;
+	padding: 15px;
+	margin: 20px;
+	border-radius: 10px;
+}
+
+ul.list li p {
+	font-weight: bold;
+}
+
+ul.list li button{
+	margin-top: 15px;
+}
+
+ul.list img {
+	width: 100%;
+	height: auto;
+}
