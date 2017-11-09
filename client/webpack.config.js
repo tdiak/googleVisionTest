@@ -1,0 +1,25 @@
+module.exports = {
+    entry: {
+        main: './src/scripts/main.js'
+    },
+    output: {
+        filename: './dist/scripts/[name].js'
+    },
+    devtool: 'source-map', 
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['react', 'es2015']
+                }
+            },
+            {
+              test: /\.sass$/,
+              loaders: ["style-loader", "css-loader", "sass-loader"]
+            }
+        ]
+    }
+}
