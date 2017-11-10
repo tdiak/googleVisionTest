@@ -4,28 +4,25 @@ import Item from './Item';
 export default class List extends React.Component{
 	constructor(props){
 		super(props);
-		let photos = [];
-
-		//mock
-		for(let i=0; i<30; i++){
-			let obj = {
-				'id': i,
-				'img': '/static/img/bg.jpg',
-				'title': 'Title ' + i
-			}
-
-			photos.push(obj);
-		}
 		this.state = {
-			'photos': photos
+			'photos': []
 		}
+		this.get_images();
+	}
+
+	get_images(){
+		fetch('http://localhost:8000/photos/')
+		.then(result => result.json())
+		.then(data => {
+			this.setState({'photos': data})
+		});
 	}
 
 	render(){
 		return (
 			<ul className="list row">
 				{this.state.photos.map(function(object, i){
-					return <Item item={object} key={i} />
+					return <Item item={object} key={object.id} />
 				})}
 			</ul>
 		)

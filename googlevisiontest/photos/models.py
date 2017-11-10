@@ -66,7 +66,7 @@ class Photo(models.Model):
                 ).save()
 
     def use_vision(self):
-        path = '{0}/{1}'.format(settings.MEDIA_ROOT, self.file.url)
+        path = '{0}{1}'.format(settings.MEDIA_ROOT, self.file.url.split('media')[1])
         vision_service = VisioService(path)
         vision_service.initialize()
         data = vision_service.get_info()
@@ -79,7 +79,6 @@ class Photo(models.Model):
     def save(self, *args, **kwargs):
         super(self.__class__, self).save(*args, **kwargs)
         self.use_vision()
-        super(self.__class__, self).save(*args, **kwargs)
 
 
 @python_2_unicode_compatible
