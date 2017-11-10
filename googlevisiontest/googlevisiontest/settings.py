@@ -28,7 +28,8 @@ INSTALLED_APPS = [
 ]
 
 PROJECT_APPS = [
-    'photos'
+    'utils',
+    'photos',
 ]
 
 INSTALLED_APPS += PROJECT_APPS
@@ -119,6 +120,8 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_DIR, 'client', 'dist'),
 )
 
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 try:
     from .localsettings import *

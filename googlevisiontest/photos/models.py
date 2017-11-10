@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import datetime
+from django.conf import settings
 from django.db import models
 from django.utils.six import python_2_unicode_compatible
+
+from utils.vision_service import VisioService
 
 
 @python_2_unicode_compatible
@@ -35,6 +39,47 @@ class Photo(models.Model):
 
     def __str__(self):
         return self.filename
+
+    def save_colors(self, colors):
+        for color in colors:
+            Color(
+                photo=self,
+                red=color[0],
+                green=color[1],
+                blue=color[2]
+            ).save()
+
+    def save_labels(self, labels):
+        for label in labels:
+            Label(
+                photo=self,
+                label=label
+            ).save()
+
+    def save_emotions(self, faces):
+        for face in faces:
+            for key, emotion in face.iteritems():
+                Emotion(
+                    photo=self,
+                    emotion_type=key,
+                    result=emotion.value
+                ).save()
+
+    def use_vision(self):
+        path = '{0}/{1}'.format(settings.MEDIA_ROOT, self.file.url)
+        vision_service = VisioService(path)
+        vision_service.initialize()
+        data = vision_service.get_info()
+        self.save_colors(data['colors'])
+        self.save_labels(data['labels'])
+        self.save_emotions(data['faces'])
+        self.last_checked_date = datetime.datetime.now()
+        self.is_checked = True
+
+    def save(self, *args, **kwargs):
+        super(self.__class__, self).save(*args, **kwargs)
+        self.use_vision()
+        super(self.__class__, self).save(*args, **kwargs)
 
 
 @python_2_unicode_compatible
@@ -83,18 +128,19 @@ class Label(models.Model):
 @python_2_unicode_compatible
 class Emotion(models.Model):
     EMOTIONS = (
-        (1, 'Joy'),
-        (2, 'Sorrow'),
-        (3, 'Anger'),
-        (4, 'Surprise')
+        ('joy', 'Joy'),
+        ('sorrow', 'Sorrow'),
+        ('anger', 'Anger'),
+        ('surprise', 'Surprise')
     )
     photo = models.ForeignKey(
         Photo,
         verbose_name="Photo"
     )
-    emotion_type = models.PositiveSmallIntegerField(
+    emotion_type = models.CharField(
         verbose_name="Emotion type",
-        choices=EMOTIONS
+        choices=EMOTIONS,
+        max_length=12
     )
     result = models.CharField(
         verbose_name="Result",
