@@ -24,3 +24,8 @@ class PhotoAdmin(admin.ModelAdmin):
         ColorInline,
         EmotionInline
     ]
+    list_display = (
+        'filename',
+        'is_deleted',
+        'is_checked'
+    )

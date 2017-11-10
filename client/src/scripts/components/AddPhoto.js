@@ -8,7 +8,6 @@ export default class AddPhoto extends React.Component{
 		this.state = {
 			'current_image': null
 		}
-		this.extensions = ['jpg', 'jpeg', 'png']
 	}
 
 	submitForm(){
@@ -24,7 +23,7 @@ export default class AddPhoto extends React.Component{
 	      body: formData
 	    }).then(function (res) {
 	      if (res.ok) {
-	        alert("Perfect! ");
+	        location.reload();
 	      } else if (res.status == 401) {
 	        alert("Oops! ");
 	      }

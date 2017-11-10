@@ -76,9 +76,15 @@ class Photo(models.Model):
         self.last_checked_date = datetime.datetime.now()
         self.is_checked = True
 
-    def save(self, *args, **kwargs):
+    def save(self, use_vision=False, *args, **kwargs):
         super(self.__class__, self).save(*args, **kwargs)
-        self.use_vision()
+        if use_vision or not self.is_checked:
+            print 'test'
+            Color.objects.filter(photo=self).delete()
+            Label.objects.filter(photo=self).delete()
+            Emotion.objects.filter(photo=self).delete()
+            self.use_vision()
+            super(self.__class__, self).save(*args, **kwargs)
 
 
 @python_2_unicode_compatible

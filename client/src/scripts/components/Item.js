@@ -15,14 +15,28 @@ export default class Item extends React.Component{
 		this.setState({'modalIsOpen': !this.state.modalIsOpen})
 	}
 
+	deletePhoto(id){
+		fetch(location.href + "photos/" + id, {
+	      method: "DELETE",
+	    }).then(function (res) {
+	      if (res.ok) {
+	        location.reload();
+	      } else if (res.status == 401) {
+	        alert("Oops! ");
+	      }
+	    }, function (e) {
+	      alert("Error submitting form!");
+	    });
+	}
+
 	render(){
 		return (
-			<li className="item col-md-3" onClick={this.changeModal.bind(this)}>
+			<li className="item col-md-3">
 				<p>{this.props.item.filename}</p>
 				<img src={this.props.item.file} />
 				<div className="row">
-					<button className="btn btn-primary col-md-3 col-md-offset-2">More</button>
-					<button className="btn btn-danger col-md-3 col-md-offset-2">Delete</button>
+					<button className="btn btn-primary col-md-3 col-md-offset-2" onClick={this.changeModal.bind(this)}>More</button>
+					<button className="btn btn-danger col-md-3 col-md-offset-2" onClick={() => this.deletePhoto(this.props.item.id)}>Delete</button>
 				</div>
 				<Modal
 				  isOpen={this.state.modalIsOpen}
