@@ -42,7 +42,7 @@ export default class AddPhoto extends React.Component{
 		return (
 			<form className="add-form">
 				<Dropzone onDrop={this.onDrop.bind(this)}>
-					{this.state.current_image ? <p>{this.state.current_image.name }}</p> : <p>Drag files here !!</p>}
+					{this.state.current_image ? <p>{this.state.current_image.name }</p> : <p>Drag files here !!</p>}
 				</Dropzone>
 				<button type="button" onClick={this.submitForm.bind(this)}>Send photo!</button>
 			</form>

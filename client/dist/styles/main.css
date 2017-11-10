@@ -69,7 +69,7 @@ form.add-form button {
 
 ul.list {
 	height: 100%;
-	overflow: scroll;
+	overflow-y: scroll;
 	list-style-type: none;
 	padding-left: 30px;
 }
@@ -79,6 +79,7 @@ ul.list li {
 	padding: 15px;
 	margin: 20px;
 	border-radius: 10px;
+	height: 390px;
 }
 
 ul.list li p {
@@ -98,4 +99,24 @@ ul.list img {
 	color: black;
 }
 
+
+@media only screen and (max-width: 850px) {
+	html{
+		height: auto;
+	}
+
+    header {
+        height: auto;
+        padding-bottom: 20px;
+    }
+
+    ul.list li{
+    	text-align: center;
+    	margin: 0;
+    	padding: 0;
+    	border: 0;
+    	margin-bottom: 50px;
+    	height: auto;
+    }
+}
 
