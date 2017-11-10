@@ -42,7 +42,7 @@ class VisioService(object):
                 content=content)
 
     def get_info(self):
-        return{
+        return {
             'labels': self.__get_labels(),
             'colors': self.__get_colors(),
             'faces': self.__get_faces()
