@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 import os
 import io
 
@@ -23,4 +26,3 @@ class Command(BaseCommand):
         print('Labels:')
         for label in labels:
             print(label.description)
-        import pdb; pdb.set_trace()

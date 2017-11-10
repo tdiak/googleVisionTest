@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('photos', '0001_initial'),
     ]
@@ -15,6 +14,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='emotion',
             name='emotion_type',
-            field=models.CharField(choices=[('joy', 'Joy'), ('sorrow', 'Sorrow'), ('anger', 'Anger'), ('surprise', 'Surprise')], max_length=12, verbose_name='Emotion type'),
+            field=models.CharField(
+                choices=[('joy', 'Joy'), ('sorrow', 'Sorrow'), ('anger', 'Anger'), ('surprise', 'Surprise')],
+                max_length=12, verbose_name='Emotion type'),
         ),
     ]

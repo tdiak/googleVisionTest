@@ -48,3 +48,5 @@ class VisioService(object):
             'colors': self.__get_colors(),
             'faces': self.__get_faces()
         }
+
+

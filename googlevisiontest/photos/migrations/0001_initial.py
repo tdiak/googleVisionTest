@@ -7,7 +7,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -31,7 +30,9 @@ class Migration(migrations.Migration):
             name='Emotion',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('emotion_type', models.PositiveSmallIntegerField(choices=[(1, 'Joy'), (2, 'Sorrow'), (3, 'Anger'), (4, 'Surprise')], verbose_name='Emotion type')),
+                ('emotion_type',
+                 models.PositiveSmallIntegerField(choices=[(1, 'Joy'), (2, 'Sorrow'), (3, 'Anger'), (4, 'Surprise')],
+                                                  verbose_name='Emotion type')),
                 ('result', models.CharField(max_length=120, verbose_name='Result')),
             ],
             options={
@@ -68,16 +69,19 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='label',
             name='photo',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='photos.Photo', verbose_name='Photo'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='photos.Photo',
+                                    verbose_name='Photo'),
         ),
         migrations.AddField(
             model_name='emotion',
             name='photo',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='photos.Photo', verbose_name='Photo'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='photos.Photo',
+                                    verbose_name='Photo'),
         ),
         migrations.AddField(
             model_name='color',
             name='photo',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='photos.Photo', verbose_name='Photo'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='photos.Photo',
+                                    verbose_name='Photo'),
         ),
     ]

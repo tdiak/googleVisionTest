@@ -6,7 +6,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Project directory
 PROJECT_DIR = os.path.dirname(BASE_DIR)
 
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'f@5!buf*ejnz-udua4n1a-!6t*mb)3@+652yw6^$hlui!#yg_-'
 
@@ -14,7 +13,6 @@ SECRET_KEY = 'f@5!buf*ejnz-udua4n1a-!6t*mb)3@+652yw6^$hlui!#yg_-'
 DEBUG = False
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -65,7 +63,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'googlevisiontest.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
@@ -75,7 +72,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -95,7 +91,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -109,17 +104,14 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
 
-
 STATICFILES_DIRS = (
     os.path.join(PROJECT_DIR, 'client', 'dist'),
 )
-
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -128,4 +120,3 @@ try:
     from .localsettings import *
 except ImportError:
     raise ImportError("Create localsetting.py file !!")
-

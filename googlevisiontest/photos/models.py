@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import datetime
-from django.conf import settings
 from django.db import models
 from django.utils.six import python_2_unicode_compatible
 
-from utils.vision_service import VisioService
+from utils.vision_save_manager import VisionSaveManager
 
 
 @python_2_unicode_compatible
@@ -20,7 +18,7 @@ class Photo(models.Model):
         upload_to='photos'
     )
     is_checked = models.BooleanField(
-        verbose_name = "Is checked by vision",
+        verbose_name="Is checked by vision",
         default=False
     )
     last_checked_date = models.DateTimeField(
@@ -40,51 +38,15 @@ class Photo(models.Model):
     def __str__(self):
         return self.filename
 
-    def save_colors(self, colors):
-        for color in colors:
-            Color(
-                photo=self,
-                red=color[0],
-                green=color[1],
-                blue=color[2]
-            ).save()
-
-    def save_labels(self, labels):
-        for label in labels:
-            Label(
-                photo=self,
-                label=label
-            ).save()
-
-    def save_emotions(self, faces):
-        for face in faces:
-            for key, emotion in face.iteritems():
-                Emotion(
-                    photo=self,
-                    emotion_type=key,
-                    result=emotion.value
-                ).save()
-
-    def use_vision(self):
-        path = '{0}{1}'.format(settings.MEDIA_ROOT, self.file.url.split('media')[1])
-        vision_service = VisioService(path)
-        vision_service.initialize()
-        data = vision_service.get_info()
-        self.save_colors(data['colors'])
-        self.save_labels(data['labels'])
-        self.save_emotions(data['faces'])
-        self.last_checked_date = datetime.datetime.now()
-        self.is_checked = True
-
-    def save(self, use_vision=False, *args, **kwargs):
+    def save(self, use_vision=None, *args, **kwargs):
         super(self.__class__, self).save(*args, **kwargs)
-        if use_vision or not self.is_checked:
-            print 'test'
-            Color.objects.filter(photo=self).delete()
-            Label.objects.filter(photo=self).delete()
-            Emotion.objects.filter(photo=self).delete()
-            self.use_vision()
-            super(self.__class__, self).save(*args, **kwargs)
+        if use_vision is False:
+            return self
+        elif use_vision is None and not self.is_checked:
+            VisionSaveManager(obj=self).run()
+        elif use_vision is True:
+            VisionSaveManager(obj=self).run()
+        return self
 
 
 @python_2_unicode_compatible

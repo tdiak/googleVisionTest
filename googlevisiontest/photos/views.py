@@ -18,7 +18,7 @@ class PhotoViewSet(viewsets.ModelViewSet):
         try:
             instance = self.get_object()
             instance.is_deleted = True
-            instance.save()
+            instance.save(use_vision=False)
         except Http404:
             pass
         return Response(status=status.HTTP_204_NO_CONTENT)
