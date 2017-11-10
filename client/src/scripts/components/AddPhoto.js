@@ -19,7 +19,7 @@ export default class AddPhoto extends React.Component{
 		formData.append('file', this.state.current_image);
 
 
-		fetch("http://localhost:8000/photos/", {
+		fetch(location.href + "photos/", {
 	      method: "POST",
 	      body: formData
 	    }).then(function (res) {

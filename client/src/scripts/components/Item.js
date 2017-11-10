@@ -32,23 +32,23 @@ export default class Item extends React.Component{
 				  }}>
 					  <h1 id="heading">{this.props.item.filename}</h1>
 					  <div id="full_description row">
-					    <img class="col-md-3" src={this.props.item.file} />
+					    <img class="col-md-6" src={this.props.item.file} />
 					    
-					    <ul class="col-md-3">
+					    <ul class="col-md-2">
 					    	<h2>Colors</h2>
 					    	{this.props.item.color_set.map(function(object, i){
 								return <li><p> - ({object.red}, {object.green}, {object.blue})</p></li>
 							})}
 					    </ul>
 
-					    <ul class="col-md-3">
+					    <ul class="col-md-2">
 					    	<h2>Labels</h2>
 					    	{this.props.item.label_set.map(function(object, i){
 								return <li><p> - {object.label}</p></li>
 							})}
 					    </ul>
 
-					    <ul class="col-md-3">
+					    <ul class="col-md-2">
 					    	<h2>Emotions</h2>
 					    	{this.props.item.emotion_set.map(function(object, i){
 								return <li><p> - {object.emotion_type} : {object.result}</p></li>

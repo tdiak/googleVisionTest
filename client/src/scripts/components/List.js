@@ -11,7 +11,7 @@ export default class List extends React.Component{
 	}
 
 	get_images(){
-		fetch('http://localhost:8000/photos/')
+		fetch(location.href + 'photos/')
 		.then(result => result.json())
 		.then(data => {
 			this.setState({'photos': data})
