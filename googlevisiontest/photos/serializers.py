@@ -29,7 +29,7 @@ class PhotoSerializer(serializers.ModelSerializer):
     color_set = ColorSerializer(many=True, read_only=True)
 
     thumbnail = HyperlinkedSorlImageField(
-        '250x250',
+        '200x200',
         source='file',
         options={"crop": "center"},
         read_only=True
