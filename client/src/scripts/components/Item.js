@@ -33,7 +33,7 @@ export default class Item extends React.Component{
 		return (
 			<li className="item col-md-3">
 				<p>{this.props.item.filename}</p>
-				<img src={this.props.item.file} />
+				<img src={this.props.item.thumbnail} />
 				<div className="row">
 					<button className="btn btn-primary col-md-3 col-md-offset-2" onClick={this.changeModal.bind(this)}>More</button>
 					<button className="btn btn-danger col-md-3 col-md-offset-2" onClick={() => this.deletePhoto(this.props.item.id)}>Delete</button>
@@ -46,7 +46,7 @@ export default class Item extends React.Component{
 				  }}>
 					  <h1 id="heading">{this.props.item.filename}</h1>
 					  <div id="full_description row">
-					    <img className="col-md-6" src={this.props.item.file} />
+					    <img className="col-md-6" src={this.props.item.big_image} />
 					    
 					    <ul className="col-md-2">
 					    	<h2>Colors</h2>

@@ -24,6 +24,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'sorl.thumbnail',
+    'sorl_thumbnail_serializer'
 ]
 
 PROJECT_APPS = [

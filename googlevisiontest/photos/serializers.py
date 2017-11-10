@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 from rest_framework import serializers
 from models import Photo, Label, Emotion, Color
+from sorl_thumbnail_serializer.fields import HyperlinkedSorlImageField
 
 
 class LabelSerializer(serializers.ModelSerializer):
@@ -27,6 +28,20 @@ class PhotoSerializer(serializers.ModelSerializer):
     emotion_set = EmotionSerializer(many=True, read_only=True)
     color_set = ColorSerializer(many=True, read_only=True)
 
+    thumbnail = HyperlinkedSorlImageField(
+        '250x250',
+        source='file',
+        options={"crop": "center"},
+        read_only=True
+    )
+
+    big_image = HyperlinkedSorlImageField(
+        '800x800',
+        source='file',
+        options={"crop": "center"},
+        read_only=True
+    )
+
     class Meta:
         model = Photo
-        fields = ('id', 'filename', 'file', 'label_set', 'emotion_set', 'color_set')
+        fields = ('id', 'filename', 'file', 'thumbnail', 'big_image', 'label_set', 'emotion_set', 'color_set')

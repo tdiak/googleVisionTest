@@ -18797,7 +18797,7 @@ var Item = function (_React$Component) {
 					null,
 					this.props.item.filename
 				),
-				_react2.default.createElement('img', { src: this.props.item.file }),
+				_react2.default.createElement('img', { src: this.props.item.thumbnail }),
 				_react2.default.createElement(
 					'div',
 					{ className: 'row' },
@@ -18830,7 +18830,7 @@ var Item = function (_React$Component) {
 					_react2.default.createElement(
 						'div',
 						{ id: 'full_description row' },
-						_react2.default.createElement('img', { className: 'col-md-6', src: this.props.item.file }),
+						_react2.default.createElement('img', { className: 'col-md-6', src: this.props.item.big_image }),
 						_react2.default.createElement(
 							'ul',
 							{ className: 'col-md-2' },
