@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils.six import python_2_unicode_compatible
 
-from utils.vision_save_manager import VisionSaveManager
+from .tasks import detect
 
 
 @python_2_unicode_compatible
@@ -43,9 +43,9 @@ class Photo(models.Model):
         if use_vision is False:
             return self
         elif use_vision is None and not self.is_checked:
-            VisionSaveManager(obj=self).run()
+            detect.delay(pk=self.pk)
         elif use_vision is True:
-            VisionSaveManager(obj=self).run()
+            detect.delay(pk=self.pk)
         return self
 
 

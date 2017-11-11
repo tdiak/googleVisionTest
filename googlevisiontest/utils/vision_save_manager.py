@@ -56,6 +56,6 @@ class VisionSaveManager(object):
         vision_service.initialize()
         self.__save_data(vision_service.get_info())
 
-        self.obj.last_checked_date=datetime.datetime.now()
+        self.obj.last_checked_date = datetime.datetime.now()
         self.obj.is_checked = True
         self.obj.save()
