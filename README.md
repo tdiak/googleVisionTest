@@ -5,7 +5,7 @@ This is a simple image hosting application that additionally performs computer v
 ## Info
 
 Client is built using react.js, backend using Python/Django. Project is using webpack to build react code.
-Data are stored in PostgreSQL database. Redis is using as message broker. Each request for api is done with the help of celery. Request to Google Vision Api is sent only once, when photo is added. Result is stored in database. Just admin can send request once again. 
+Data are stored in PostgreSQL database. Redis is using as message broker. Each request for api is done with the help of celery. Request to Google Vision Api is sent only once, when photo is added. Result is stored in database. Just admin can send request once again. Images are cropped, resized, cached via thumbnail package.
 
 API is built using django-rest-framework. Deleting photos does not delete them from database, only change flag 'is_deleted' on True value (soft delete). Just admin can delete photo from database. 
 ```
