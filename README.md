@@ -43,7 +43,7 @@ pip install -r requirements.txt
 8. Create localsettings.py
 ```
 cp localsettings.default localsettings.py
-'''
+```
 
 9. Update localsettings.py
 ```
