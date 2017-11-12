@@ -18,6 +18,8 @@ Delete photo [DELETE] /photos/<id:int>
 
 ![alt screen](https://raw.githubusercontent.com/tdiak/googleVisionTest/update-readme/client/dist/img/screen_2.png) 
 
+![alt screen](https://raw.githubusercontent.com/tdiak/googleVisionTest/update-readme/client/dist/img/screen_3.png)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
@@ -138,7 +140,7 @@ But if you want you need to:
 npm install
 ```
 
-5. Now you can change sth in src directory and build appliacation using webpack
+5. Now you can change smth in src directory and build application using webpack
 ```
 webpack --watch
 ```
