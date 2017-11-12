@@ -7,14 +7,17 @@ from django.conf import settings
 from utils.vision_service import VisioService
 
 
+# Other imports are isnide methods because we've got circular imports problem
+
+
 class VisionSaveManager(object):
     def __init__(self, obj=None):
         self.obj = obj
         self.data = None
 
     def __save_colors(self, colors):
+        from photos.models import Color
         for color in colors:
-            from photos.models import Color
             self.__clear(Color)
             Color(
                 photo=self.obj,
