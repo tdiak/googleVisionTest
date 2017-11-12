@@ -104,3 +104,11 @@ ENV/
 # IDE
 .idea
 googlevisiontest/.idea
+
+# Project stuff
+api_key.json
+test.png
+localsettings.py
+googlevisiontest/media/photos
+googlevisiontest/media/cache
+node_modules
