@@ -10,7 +10,8 @@ DATABASES = {
 }
 
 DEBUG = True
-API_KEY_PATH = '<path to your api key>'
+API_KEY_PATH = <api_key_path> #example: os.path.join(BASE_DIR, 'google', 'api_key.json')
+API_TEST_IMAGE_PATH = <api_test_image_path> #example os.path.join(BASE_DIR, 'google', 'test.png')
 
 ALLOWED_HOSTS = []
 

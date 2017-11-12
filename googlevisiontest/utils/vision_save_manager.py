@@ -8,8 +8,9 @@ from utils.vision_service import VisioService
 
 
 class VisionSaveManager(object):
-    def __init__(self, obj):
+    def __init__(self, obj=None):
         self.obj = obj
+        self.data = None
 
     def __save_colors(self, colors):
         for color in colors:
@@ -50,12 +51,16 @@ class VisionSaveManager(object):
         self.__save_labels(data['labels'])
         self.__save_emotions(data['faces'])
 
-    def run(self):
-        path = '{0}{1}'.format(settings.MEDIA_ROOT, self.obj.file.url.split('media')[1])
+    def run(self, path=None, commit=True):
+        if not path:
+            path = '{0}{1}'.format(settings.MEDIA_ROOT, self.obj.file.url.split('media')[1])
         vision_service = VisioService(path)
         vision_service.initialize()
-        self.__save_data(vision_service.get_info())
+        self.data = vision_service.get_info()
+        if commit:
+            self.__save_data(self.data)
+            self.obj.last_checked_date = datetime.datetime.now()
+            self.obj.is_checked = True
+            self.obj.save()
 
-        self.obj.last_checked_date = datetime.datetime.now()
-        self.obj.is_checked = True
-        self.obj.save()
+        return self.data
