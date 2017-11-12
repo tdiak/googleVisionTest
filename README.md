@@ -16,7 +16,7 @@ Delete photo [DELETE] /photos/<id:int>
 
 ![alt screen](https://raw.githubusercontent.com/tdiak/googleVisionTest/update-readme/client/dist/img/screen_1.png)
 
-![alt screen](https://raw.githubusercontent.com/tdiak/googleVisionTest/update-readme/client/dist/img/screen_1.png:) 
+![alt screen](https://raw.githubusercontent.com/tdiak/googleVisionTest/update-readme/client/dist/img/screen_2.png) 
 
 ## Getting Started
 
