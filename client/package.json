@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "googleVisionTest",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -22,6 +22,7 @@
     "webpack-dev-server": "^2.9.4"
   },
   "dependencies": {
-    "react-dropzone": "^4.2.1"
+    "react-dropzone": "^4.2.1",
+    "react-modal": "^3.1.2"
   }
 }
