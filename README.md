@@ -2,6 +2,15 @@
 
 This is a simple image hosting application that additionally performs computer vision analysis via the Google Vision API.
 
+## Info
+
+Client is built using react.js, backend using Python/Django. Project is using webpack to build react code.
+Data are stored in PostgreSQL database. Redis is using as message broker. Each request for api is done with the help of celery.
+
+![alt screen](https://raw.githubusercontent.com/tdiak/googleVisionTest/blob/update-readme/client/dist/img/screen_1.jpg)
+
+![alt screen](https://raw.githubusercontent.com/tdiak/googleVisionTest/blob/update-readme/client/dist/img/screen_1.jpg) 
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
@@ -106,4 +115,25 @@ If tests didn't passed, check your GOOGLE_APPLICATION_CREDENTIALS variable and l
 celery --app=googlevisiontest.celery:app worker --loglevel=INFO -P solo
 ```
 
-17. Now, your application should work !!
+17. Now your application should work !!
+
+## How to update UI ?
+UI is built using react.js. Build version is in repository, so if you want to run project you don't need to compile it.
+But if you want you need to:
+1. Install Node.js and npm
+
+2. Install webpack globally
+
+3. Go to the "client" directory in project path
+
+4. Install npm packages
+```
+npm install
+```
+
+5. Now you can change sth in src directory and build appliacation using webpack
+```
+webpack --watch
+```
+
+6. In dist directory you will see new build
