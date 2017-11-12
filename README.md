@@ -14,9 +14,9 @@ Add new photo [POST] /photos/
 Delete photo [DELETE] /photos/<id:int>
 ```
 
-![alt screen](https://raw.githubusercontent.com/tdiak/googleVisionTest/blob/update-readme/client/dist/img/screen_1.png)
+![alt screen](https://raw.githubusercontent.com/tdiak/googleVisionTest/update-readme/client/dist/img/screen_1.png)
 
-![alt screen](https://raw.githubusercontent.com/tdiak/googleVisionTest/blob/update-readme/client/dist/img/screen_1.png:) 
+![alt screen](https://raw.githubusercontent.com/tdiak/googleVisionTest/update-readme/client/dist/img/screen_1.png:) 
 
 ## Getting Started
 
